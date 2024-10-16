@@ -46,7 +46,14 @@ export class DetalleviajePage implements OnInit {
   public directionsDisplay: any;
 
   ngOnInit() {
-    const viajeId = this.route.snapshot.paramMap.get('id'); 
+    const viajeId = this.route.snapshot.paramMap.get('id');
+    if (viajeId) {
+      this.obtenerDetallesViaje(viajeId);
+    }
+  }
+
+  ionViewDidEnter(){
+    const viajeId = this.route.snapshot.paramMap.get('id');
     if (viajeId) {
       this.obtenerDetallesViaje(viajeId);
     }
@@ -148,52 +155,36 @@ export class DetalleviajePage implements OnInit {
    
      origin: this.start,
    
-     destination: this.end = this.viaje?.destino,
+     destination: this.end = this.viaje?.destino ? this.viaje.destino + ', Chile' : '',
    
      travelMode: 'DRIVING'
    
     }, (response: any, status: string) => {
    
      if (status === 'OK') {
-   
+
       this.directionsDisplay.setDirections(response);
-   
       const route = response.routes[0];
-   
       const leg = route.legs[0];
    
       // Distancia total
-   
       const distanceInKilometers = (leg.distance.value / 1000).toFixed(2);
-   
       console.log(`Distancia: ${distanceInKilometers} km`);
-   
       this.distancia = `${distanceInKilometers} km`;
    
       // Tiempo de viaje
-   
       const durationInSeconds = leg.duration.value;
-   
       const minutes = Math.floor(durationInSeconds / 60); // minutos
-   
       const seconds = durationInSeconds % 60; // segundos
-   
       const formattedDuration = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-   
       console.log(`Duración: ${formattedDuration} (mm:ss)`);
-   
       this.duracion = `${formattedDuration}`;
    
       // Información sobre origen y destino
-   
       console.log(`Inicio: ${leg.start_address}`);
-   
       console.log(`Destino: ${leg.end_address}`);
-   
-   
-   
+
       // Tiempo de viaje en tráfico
-   
       if (leg.duration_in_traffic) {
    
        const durationInTraffic = leg.duration_in_traffic.value / 60;
@@ -202,18 +193,10 @@ export class DetalleviajePage implements OnInit {
    
       }
    
-   
-   
       // Detalles de los pasos
-   
       leg.steps.forEach((step: any, index: number) => {
-   
        const stepDistance = step.distance.value / 1000; // en km
-   
        const stepDuration = step.duration.value / 60; // en minutos
-   
-   
-   
        console.log(`Paso ${index + 1}: ${step.instructions}, Distancia: ${stepDistance} km, Tiempo: ${stepDuration} minutos`);
    
       });

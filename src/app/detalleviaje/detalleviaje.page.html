@@ -13,14 +13,14 @@
       <ion-card-title>{{ viaje.destino }}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <p>Conductor: {{ viaje.conductorNombre }}</p>
-      <p>Fecha: {{ viaje.fechaHora | date }}</p>
-      <p>Capacidad: {{ viaje.capacidad }}</p>
-      <p>Costo por persona: {{ viaje.costo }}</p>
-      <p>Pasajeros: {{ viaje.pasajeros?.length || 0 }}</p>
+      <h3>Conductor: {{ viaje.conductorNombre }}</h3>
+      <h3>Fecha: {{ viaje.fechaHora | date }}</h3>
+      <h3>Capacidad: {{ viaje.capacidad }}</h3>
+      <h3>Costo por persona: {{ viaje.costo }}</h3>
+      <h3>Pasajeros: {{ viaje.pasajeros?.length || 0 }}</h3>
 
       <!-- Contenedor para el mapa -->
-      <div #map style="height: 300px;"></div>
+      <div #map style="height: 350px;"></div>
     </ion-card-content>
   </ion-card>
 </ion-content>

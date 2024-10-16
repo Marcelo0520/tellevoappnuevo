@@ -22,7 +22,7 @@ export class HomePage {
             ) {
               this.auth.stateUser().subscribe(res => {
                 if(res){
-                  console.log(`Usuario ${res.email} está logeado`);
+                  console.log(`Usuario ${res.displayName || res.email} está logeado`);
                   this.login=true
                 }else{
                   console.log('No está logeado');

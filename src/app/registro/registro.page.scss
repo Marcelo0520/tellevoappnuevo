@@ -9,6 +9,20 @@
     font-size: 2em;
 }
 
+.container{
+    padding: 1.5em;
+    display: flex;
+    flex-direction: column;
+    ion-input{
+        width: 100%;
+    }
+}
+
+h1{
+    color: var(--textlogin);
+    text-align: center;
+}
+
 ion-content{
     --background:var(--backlogin);
 }

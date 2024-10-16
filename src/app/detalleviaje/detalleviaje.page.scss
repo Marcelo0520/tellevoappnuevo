@@ -1,0 +1,24 @@
+ion-toolbar{
+    --background:var(--titulo);
+    text-align: center;
+}
+
+ion-content,ion-card{
+    --background:var(--fondos);
+}
+
+ion-card-title{
+    color: black;
+}
+
+ion-card{
+    box-shadow: 0px 0px 10px 1px var(--boxshadow);
+
+}
+
+h3{
+    font-size: 1.2em;
+    margin-bottom: .3em;
+    color: black;
+}
+
