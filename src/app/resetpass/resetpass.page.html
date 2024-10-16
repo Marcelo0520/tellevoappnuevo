@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>¿Has olvidado tu contraseña?</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="ion-text-center">
+    <small>Escribe tu correo para enviarte un link para restablecer tu contraseña.</small>
+  </div>
+  <ion-card class="contenedor_login">
+    <ion-card-header>
+          <ion-card-title>Restablecer contraseña</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      
+        <form (submit)="sendLinkReset()">
+          
+          <ion-item>
+            <ion-icon name="mail"></ion-icon>
+            <ion-input name="email" type="text" [(ngModel)]="email" placeholder="Ingrese su correo electrónico"></ion-input>
+        </ion-item>
+        <br>
+        <ion-button fill="full" type="submit">Enviar</ion-button>
+        </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>
+      <a target="_blank" href="https://www.duoc.cl/"><h3>Instituto profesional Duoc UC</h3></a>
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

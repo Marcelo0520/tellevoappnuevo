@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <h3>TeLlevoApp<ion-icon></ion-icon></h3>
+  </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div class="cambiartema">
+  <ion-icon src="assets/oscuro.svg" (click)="cambiarTema()"></ion-icon>
+</div>
+<ion-card class="contenedor_login">
+      <ion-card-header>
+            <ion-card-title>Registro de usuario</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-icon name="person" ></ion-icon>
+              <ion-input type="text" placeholder="Usuario123" [(ngModel)]="datos.usuario"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-icon name="mail" ></ion-icon>
+              <ion-input type="text" placeholder="Correo electrónico" [(ngModel)]="datos.correo"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-icon name="lock-closed"></ion-icon>
+              <ion-input type="password" placeholder="Ingrese contraseña" [(ngModel)]="datos.password"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="refresh"></ion-icon>
+            <ion-input type="password" placeholder="Repita su contraseña" [(ngModel)]="datos.password"></ion-input>
+        </ion-item>
+          </ion-list>
+
+          <ion-row>
+              <ion-col>
+                  <ion-button type="submit" fill="solid" expand="full" (click)="registrar()">
+                      Registrarme
+                  </ion-button>
+              </ion-col>
+          </ion-row>
+      </ion-card-content>
+  </ion-card>
+
+
+  <ion-modal>
+    <ng-template>
+      <ion-content>
+        <div id="contenedor">
+          <ion-icon src="/assets/logo.svg"></ion-icon>
+          <h1>Recupera la clave</h1>
+          <input type="text" placeholder="usuario@gmail.com" >
+          <button>Recuperar</button>
+          <button>Cancelar</button>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>
+      <a target="_blank" href="https://www.duoc.cl/"><h3 >Instituto profesional Duoc UC</h3></a>
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

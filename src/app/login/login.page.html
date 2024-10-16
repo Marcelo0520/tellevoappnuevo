@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <h3>TeLlevoApp<ion-icon></ion-icon></h3>
+  </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div class="cambiartema">
+  <ion-icon src="assets/oscuro.svg" (click)="cambiarTema()"></ion-icon>
+</div>
+<ion-card class="contenedor_login">
+      <ion-card-header>
+            <ion-card-title>Iniciar sesion</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+          <ion-list>
+          <ion-item>
+              <ion-icon name="mail" class="icon-login"></ion-icon>
+              <ion-input type="text" placeholder="Correo electrónico" [(ngModel)]="credenciales.correo"></ion-input>
+          </ion-item>
+              <br/>
+          <ion-item>
+              <ion-icon name="lock-closed"></ion-icon>
+              <ion-input type="password" placeholder="Ingrese contraseña" [(ngModel)]="credenciales.password"></ion-input>
+          </ion-item>
+          </ion-list>
+
+          <ion-row>
+              <ion-col>
+                  <ion-button type="submit" fill="solid" expand="full" (click)="login()">
+                      Ingresar
+                  </ion-button>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+                <ion-label>
+                    <a [routerLink] ="['/registro']"><h3>Regístrate</h3></a>
+                </ion-label>
+            </ion-col>
+        </ion-row>
+          <ion-row>
+              <ion-col>
+                  <ion-label>
+                      <a [routerLink] ="['/resetpass']"><h3>¿Olvidó la contraseña?</h3></a>
+                  </ion-label>
+              </ion-col>
+          </ion-row>
+      </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>
+      <a target="_blank" href="https://www.duoc.cl/"><h3 >Instituto profesional Duoc UC</h3></a>
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

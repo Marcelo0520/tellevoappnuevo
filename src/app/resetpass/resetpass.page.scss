@@ -1,0 +1,53 @@
+ion-title{
+    text-align: center;
+    color: white;
+}
+
+ion-toolbar{
+    --background:var(--titulo);
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+ion-content{
+    --background:var(--fondos);
+
+}
+
+small{
+    color: #040404;
+}
+
+ion-icon{
+    color: #040404;
+}
+
+.contenedor_login{
+    box-shadow: 0px 0px 10px 1px #040404;
+
+}
+
+ion-card-title{
+    text-align: center;
+    color: #040404;
+}
+
+ion-card{
+    --background:var(--backlogin);
+}
+
+ion-list{
+    --background:none;
+}
+
+ion-input{
+    color: black;
+}
+
+ion-button{
+    --background:var(--titulo);
+    --color: white;
+}
