@@ -13,6 +13,8 @@ export class HomePage {
 
 
   login:boolean = false;
+  userName: string | null = '';
+
 
   constructor(private auth:AuthService,
               private toastController: ToastController,
@@ -28,6 +30,14 @@ export class HomePage {
                 }
               })
             }
+
+
+    ngOnInit() {
+    this.auth.stateUser().subscribe(user => {
+    this.login = !!user;  
+    this.userName = user ? user.displayName || user.email : '';  
+  });
+   }
 
   async showToast(message: string, color:string) {
     const toast = await this.toastController.create({

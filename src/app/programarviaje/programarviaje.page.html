@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button></ion-back-button>
+      <ion-title>Programar Viaje</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Formulario de Viaje</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="programarViaje()" #viajeForm="ngForm">
+        <div class="inputwrap">
+          <ion-label>Destino</ion-label>
+          <ion-input 
+            type="text" 
+            [(ngModel)]="viaje.destino" 
+            name="destino" 
+            placeholder="Ingresa el destino" 
+            required>
+          </ion-input>
+        </div>
+        <br>
+          <div class="inputwrap">
+            <ion-label>Nombre del conductor</ion-label>
+          <ion-input 
+            type="text" 
+            [(ngModel)]="viaje.conductorNombre" 
+            name="conductor" 
+            placeholder="Ingresa su nombre" 
+            required>
+          </ion-input>
+          </div>
+        <br>
+        <div class="inputwrap">
+          <ion-label>Fecha y Hora</ion-label>
+          <ion-datetime 
+            [(ngModel)]="viaje.fechaHora" 
+            name="fechaHora"  
+            placeholder="Selecciona fecha y hora" 
+            required>
+          </ion-datetime>
+        </div>
+
+          <div class="inputwrap">
+            <ion-label>Capacidad</ion-label>
+          <ion-input 
+            type="number" 
+            [(ngModel)]="viaje.capacidad" 
+            name="capacidad" 
+            placeholder="Capacidad del vehículo" 
+            min="1" 
+            required>
+          </ion-input>
+          </div>
+
+          <div class="inputwrap">
+            <ion-label>Costo por Persona</ion-label>
+          <ion-input 
+            type="number" 
+            [(ngModel)]="viaje.costo" 
+            name="costo" 
+            placeholder="Costo por persona" 
+            min="0" 
+            required>
+          </ion-input>
+          </div>
+
+        <ion-button expand="full" type="submit" [disabled]="!viajeForm.valid">  <!-- Desactiva el botón si el formulario no es válido -->
+          Programar Viaje
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

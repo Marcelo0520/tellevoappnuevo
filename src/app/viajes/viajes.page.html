@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Apartado de viajes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <h4 class="ion-text-center">Por favor eliga una opción según su necesidad</h4>
+  <br>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Opciones de Viaje</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <ion-button expand="block" (click)="goToProgramarViaje()">
+              Programar un Viaje
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-button expand="block" (click)="goToVerViajes()">
+              Ver Viajes Disponibles
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

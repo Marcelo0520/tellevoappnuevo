@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button></ion-back-button>
+      <ion-title>Detalles del Viaje</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card *ngIf="viaje">
+    <ion-card-header>
+      <ion-card-title>{{ viaje.destino }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Conductor: {{ viaje.conductorNombre }}</p>
+      <p>Fecha: {{ viaje.fechaHora | date }}</p>
+      <p>Capacidad: {{ viaje.capacidad }}</p>
+      <p>Costo por persona: {{ viaje.costo }}</p>
+      <p>Pasajeros: {{ viaje.pasajeros?.length || 0 }}</p>
+
+      <!-- Contenedor para el mapa -->
+      <div #map style="height: 300px;"></div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

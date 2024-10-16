@@ -11,6 +11,11 @@
     </ion-header>
     <ion-content>
       <div class="container">
+        <!-- Mostrar nombre o email del usuario logueado -->
+          <ion-item *ngIf="login">
+            <ion-label>Hola, {{ userName }} </ion-label>
+          </ion-item>
+          <!-- Login y Logout lleva sus condicionales para mostrarse -->
          <ion-list>
           <ion-item *ngIf="login" detail="true" (click)="logout()">
             <ion-icon name="log-out"></ion-icon>
@@ -20,16 +25,27 @@
              <ion-icon name="log-in"></ion-icon>
              <p>Inicio de sesión/Registrarse</p>
            </ion-item>
-           <ion-item [routerLink] ="">
+
+          <!-- Opción de Viajes solo para usuarios logueados -->
+           <ion-item *ngIf="login" [routerLink] ="['/viajes']">
              <ion-icon src="assets/route.svg"></ion-icon>
              <p>Viajes</p>
            </ion-item>
-           <ion-item [routerLink] = "">
-             <ion-icon name="call-sharp"></ion-icon>   
-             <p>Contactos</p>
-           </ion-item>
            
    
+           <!-- Opciones visibles para todos -->
+          <ion-item [routerLink]="['/sobre']">
+            <ion-icon name="information-circle"></ion-icon>
+            <p>Sobre la app</p>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="help-circle"></ion-icon>
+            <p>Ayuda</p>
+          </ion-item>
+            <ion-item>
+            <ion-icon name="call"></ion-icon>
+            <p>Contacto</p>
+          </ion-item>
          </ion-list>
       </div>
     </ion-content>

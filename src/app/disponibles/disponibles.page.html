@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button></ion-back-button>
+      <ion-title>Viajes disponibles</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Viajes Disponibles</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let viaje of viajesDisponibles">
+          <ion-label>
+            <h2 (click)="viaje.id ? verDetalles(viaje.id) : null">{{ viaje.destino }}</h2>
+            <p>Fecha: {{ viaje.fechaHora | date }}</p>
+            <p>Capacidad disponible: {{ viaje.capacidad - (viaje.pasajeros?.length || 0) }}</p>
+            <p>Costo por persona: {{ viaje.costo }}</p>
+          </ion-label>
+          <ion-button [disabled]="!hayCapacidad(viaje)" (click)="solicitarViaje(viaje)">
+            Solicitar
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -23,6 +23,22 @@ const routes: Routes = [
     path: 'resetpass',
     loadChildren: () => import('./resetpass/resetpass.module').then( m => m.ResetpassPageModule)
   },
+  {
+    path: 'viajes',
+    loadChildren: () => import('./viajes/viajes.module').then( m => m.ViajesPageModule)
+  },
+  {
+    path: 'programarviaje',
+    loadChildren: () => import('./programarviaje/programarviaje.module').then( m => m.ProgramarviajePageModule)
+  },
+  {
+    path: 'disponibles',
+    loadChildren: () => import('./disponibles/disponibles.module').then( m => m.DisponiblesPageModule)
+  },
+  {
+    path: 'detalleviaje/:id',
+    loadChildren: () => import('./detalleviaje/detalleviaje.module').then( m => m.DetalleviajePageModule)
+  },
 ];
 
 @NgModule({
