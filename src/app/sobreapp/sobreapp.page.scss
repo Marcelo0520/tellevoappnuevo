@@ -1,0 +1,43 @@
+a{
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+ion-content{
+    --background:var(--fondos);
+}
+
+ion-toolbar{
+    --background:var(--titulo);
+}
+
+.info{
+    margin: 0 2em;
+}
+
+p,h1,h2,h3{
+    color: black;
+}
+
+p{
+    text-align: justify;
+}
+h1{
+    text-align: center;
+    color: var(--titulo);
+}
+
+.row{
+    display: flex;
+    gap: .5em;
+}
+
+.imagen{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+img{
+    width: 100px;
+}

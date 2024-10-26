@@ -15,6 +15,8 @@ export class RegistroPage implements OnInit {
 
   icono="oscuro"
 
+  password2=""
+
   datos: UserI = {
     usuario:"",
     correo:"",
@@ -58,24 +60,31 @@ export class RegistroPage implements OnInit {
   }
 
   async registrar() {
-    this.interaction.presentLoading('Registrando...');
     console.log('datos ->', this.datos);
+  
+    // Validar si las contraseñas coinciden
+    if (this.datos.password !== this.password2) {
+      this.showToast('Las contraseñas no coinciden', 'danger');
+      return;  
+    }
   
     try {
       const res = await this.auth.registarUser(this.datos);
-      
+  
       if (res) {
         const path = 'Usuarios';
         const id = res.user?.uid;
   
-        // Validar que el ID no sea undefined
         if (id) {
           this.datos.id = id;
+          this.interaction.presentLoading('Registrando...');
           await this.firestore.creatDoc(this.datos, path, id);
           this.showToast(`Felicidades, registrado con éxito`, 'success');
-          this.datos.correo = ""
-          this.datos.password = ""
-          this.datos.usuario = ""
+          this.datos.correo = "";
+          this.datos.password = "";
+          this.datos.usuario = "";
+          this.password2 = "";
+          this.interaction.closeLoading();
           this.router.navigate(['/home']);
         } else {
           console.error('Error: El ID del usuario es undefined');
@@ -84,10 +93,11 @@ export class RegistroPage implements OnInit {
       }
     } catch (error) {
       console.log('Error:', error);
-      this.showToast('Error al registrarse', 'danger');
+      this.showToast('Datos incorrectos', 'danger');
     } finally {
       this.interaction.closeLoading();
     }
   }
+  
   
 }

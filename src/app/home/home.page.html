@@ -15,8 +15,13 @@
           <ion-item *ngIf="login">
             <ion-label>Hola, {{ userName }} </ion-label>
           </ion-item>
+          
           <!-- Login y Logout lleva sus condicionales para mostrarse -->
          <ion-list>
+          <ion-item *ngIf="login" [routerLink]="['/perfil']">
+            <ion-icon name="people"></ion-icon>
+            <p>Mi perfil</p>
+          </ion-item>
           <ion-item *ngIf="login" detail="true" (click)="logout()">
             <ion-icon name="log-out"></ion-icon>
             <p>Logout</p>
@@ -34,17 +39,9 @@
            
    
            <!-- Opciones visibles para todos -->
-          <ion-item [routerLink]="['/sobre']">
+          <ion-item [routerLink]="['/sobreapp']">
             <ion-icon name="information-circle"></ion-icon>
             <p>Sobre la app</p>
-          </ion-item>
-          <ion-item>
-            <ion-icon name="help-circle"></ion-icon>
-            <p>Ayuda</p>
-          </ion-item>
-            <ion-item>
-            <ion-icon name="call"></ion-icon>
-            <p>Contacto</p>
           </ion-item>
          </ion-list>
       </div>

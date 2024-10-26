@@ -27,8 +27,13 @@ export class DisponiblesPage implements OnInit {
 
   obtenerViajes() {
     const path = 'Viajes';
+    const fechaActual = new Date(); 
     this.firestore.getCollection<ViajeI>(path).subscribe(viajes => {
       this.viajesDisponibles = viajes;
+      this.viajesDisponibles = this.viajesDisponibles.filter((viaje: any) => {
+        const fechaViaje = new Date(viaje.fechaHora);  // Convierte la fecha del viaje a un objeto Date
+        return fechaViaje > fechaActual;  // Mantén solo los viajes cuya fecha es mayor a la actual
+      });
     });
   }
 

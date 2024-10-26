@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button></ion-back-button>
+      <ion-title>TeLlevoApp</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  [fullscreen]="true">
+  <div *ngIf="login" class="usuarioperfil">
+    <ion-card-header>
+          <h2>Perfil de {{ usuario?.usuario || 'Usuario no disponible' }}</h2>
+        <ul>
+          <li>Nombre: {{ usuario?.usuario }}</li>
+          <li>Email: {{ usuario.correo }}</li>
+        </ul>
+
+      </ion-card-header>
+    <ion-card-content>
+      <br>
+      <h3>Historial de viajes</h3>
+      <ion-list>
+        <ion-item *ngFor="let viaje of viajes">
+          <ion-label>
+            <h2>Destino: {{ viaje.destino }}</h2>
+            <p>Fecha: {{ viaje.fechaHora | date }}</p>
+            <p>Costo: {{ viaje.costo }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <br>
+    </ion-card-content>
+  </div>
+  
+</ion-content>

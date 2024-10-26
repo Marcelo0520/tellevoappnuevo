@@ -18,7 +18,9 @@ declare var google: any;
   styleUrls: ['./detalleviaje.page.scss'],
 })
 export class DetalleviajePage implements OnInit {
+
   viaje: ViajeI | undefined;
+  
 
   constructor(
     private route: ActivatedRoute,
@@ -27,22 +29,17 @@ export class DetalleviajePage implements OnInit {
     private zone: NgZone
   ) {}
 
+
+  //Lista para guardar los pasos a seguir de la ruta
+  public steps: any[] = [];  
   autocompleteItems!: any[];
-
   distancia = '';
-
   duracion = '';
-
   @ViewChild('map') mapElement: ElementRef | undefined;
-
   public map: any;
-
   public start: any = 'Duoc UC: Sede Melipilla - Serrano, Melipilla, Chile';
-
   public end: any = '';
-
   public directionsService: any;
-
   public directionsDisplay: any;
 
   ngOnInit() {
@@ -68,55 +65,26 @@ export class DetalleviajePage implements OnInit {
   }
 
   initMap() {
-
     this.directionsService = new google.maps.DirectionsService;
-   
     this.directionsDisplay = new google.maps.DirectionsRenderer;
-   
-    // let latLng = new google.maps.LatLng(this.latitude, this.longitude);
-   
     let mapOptions = {
-   
-     // center: latLng,
-   
      zoom: 5,
-   
-     zoomControl: false,
-   
-     scaleControl: false,
-   
-     mapTypeControl: false,
-   
+     zoomControl: true,
+     scaleControl: true,
+     mapTypeControl: true,
      streetViewControl: false,
-   
      fullscreenControl: true,
-   
      mapTypeId: google.maps.MapTypeId.ROADMAP,
-   
     };
-   
     this.map = new google.maps.Map(this.mapElement!.nativeElement, mapOptions);
-   
-    let infoWindow = new google.maps.InfoWindow();
-   
-   
-   
-    // Try HTML5 geolocation.
-   
+    let infoWindow = new google.maps.InfoWindow();   
     if (navigator.geolocation) {
-   
      navigator.geolocation.getCurrentPosition(
-   
       (position: GeolocationPosition) => {
-   
        const pos = {
-   
         lat: position.coords.latitude,
-   
         lng: position.coords.longitude,
-   
        };
-   
        // new google.maps.Marker({
    
        //  position: pos,
@@ -124,29 +92,15 @@ export class DetalleviajePage implements OnInit {
        //  map: this.map,
    
        // });
-   
        infoWindow.setPosition(pos);
-   
        infoWindow.setContent("Estas aquí.");
-   
        infoWindow.open(this.map);
-   
        this.map.setCenter(pos);
-   
       }
-   
      );
-   
     }
-   
-   
-   
-   
-   
     this.directionsDisplay.setMap(this.map);
-   
     this.calculateAndDisplayRoute();
-   
    }
 
    calculateAndDisplayRoute() {
@@ -194,13 +148,14 @@ export class DetalleviajePage implements OnInit {
       }
    
       // Detalles de los pasos
-      leg.steps.forEach((step: any, index: number) => {
-       const stepDistance = step.distance.value / 1000; // en km
-       const stepDuration = step.duration.value / 60; // en minutos
-       console.log(`Paso ${index + 1}: ${step.instructions}, Distancia: ${stepDistance} km, Tiempo: ${stepDuration} minutos`);
-   
-      });
-   
+      this.steps = leg.steps.map((step: any, index: number) => {
+        console.log(step.instructions)
+        return {
+          instruction: step.instructions.replace(/<\/?[^>]+(>|$)/g, ""), // Instrucción del paso
+          distance: (step.distance.value / 1000).toFixed(2), // Distancia en km
+          duration: Math.floor(step.duration.value / 60)  // Duración en minutos
+        };
+      }); 
    
    
      } else {

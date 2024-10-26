@@ -23,4 +23,17 @@
       <div #map style="height: 350px;"></div>
     </ion-card-content>
   </ion-card>
+
+  <ion-card class="ion-padding">
+    <ion-card-title>Pasos del Viaje</ion-card-title>
+    <ion-list *ngIf="steps.length > 0">
+      <ion-item *ngFor="let step of steps">
+        <ion-label>
+          <h3>{{step.instruction}}</h3>
+          <p>Distancia: {{ step.distance }} km</p>
+          <p>Duración: {{ step.duration }} min</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
 </ion-content>

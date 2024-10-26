@@ -40,4 +40,6 @@ export class AuthService {
     return this.authfirebase.sendPasswordResetEmail(email);
   }
 
+  
+
 }

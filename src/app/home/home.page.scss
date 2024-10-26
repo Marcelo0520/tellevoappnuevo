@@ -3,6 +3,10 @@ ion-content,ion-toolbar{
     --color: var(--textos);
 }
 
+a{
+  text-decoration: none;
+  text-align: center;
+}
 
 ion-title{
   color: var(--titulo);
